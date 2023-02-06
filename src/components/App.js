@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
 function App() {
 
     const [img, setImg] = useState("")
-    // const [fetched, setFetched] = useState(false)
 
-    // const display = fetched ? "none" : ""
     useEffect(() => {
         
         fetch("https://dog.ceo/api/breeds/image/random")
@@ -16,6 +14,10 @@ function App() {
             setImg(dog.message)})
     }, []
     )
+
+    if (!img) {
+        return <p>Loading...</p>
+    }
 
     return <img src={img} alt="A Random Dog"/>
     }
